@@ -1,0 +1,4 @@
+beautifulsoup4==4.9.1
+pexpect==4.8.0
+ptyprocess==0.7.0
+requests==2.25.0
