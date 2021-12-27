@@ -15,17 +15,18 @@
 #
 #
 # Phantom App imports
-import phantom.app as phantom
-from phantom.base_connector import BaseConnector
-from phantom.action_result import ActionResult
-import phantom.rules as Rules
-
-from cuckoo_consts import *
+import json
 import math
 import time
-import json
+
+import phantom.app as phantom
+import phantom.rules as Rules
 import requests
 from bs4 import BeautifulSoup
+from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+
+from cuckoo_consts import *
 
 
 class RetVal(tuple):
@@ -139,7 +140,8 @@ class CuckooConnector(BaseConnector):
         if response.status_code == 200:
             return RetVal(phantom.APP_SUCCESS, {})
 
-        return RetVal(action_result.set_status(phantom.APP_ERROR, "Status code: {0}. Empty response and no information in the header".format(response.status_code)), None)
+        return RetVal(action_result.set_status(phantom.APP_ERROR,
+                    "Status code: {0}. Empty response and no information in the header".format(response.status_code)), None)
 
     def _process_html_response(self, response, action_result):
 
@@ -501,9 +503,10 @@ class CuckooConnector(BaseConnector):
 
 if __name__ == '__main__':
 
-    import pudb
-    import sys
     import argparse
+    import sys
+
+    import pudb
 
     pudb.set_trace()
 

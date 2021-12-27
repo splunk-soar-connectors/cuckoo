@@ -10,11 +10,11 @@
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2014-2021 Splunk Inc.",
-    "app_version": "2.1.1",
+    "app_version": "2.2.0",
     "utctime_updated": "2021-11-10T02:27:15.000000Z",
     "package_name": "phantom_cuckoo",
     "main_module": "cuckoo_connector.py",
-    "min_phantom_version": "4.9.39220",
+    "min_phantom_version": "5.0.0",
     "python_version": "3",
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
