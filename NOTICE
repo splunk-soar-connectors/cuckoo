@@ -1,7 +1,14 @@
 Splunk SOAR Cuckoo
-Copyright 2022 Splunk Inc.
+Copyright (c) 2014-2022 Splunk Inc.
 
 Third-party Software Attributions:
+
+Library: beautifulsoup4
+Version: 4.9.1
+License: MIT
+Copyright 2004-2017 Leonard Richardson
+Copyright 2004-2019 Leonard Richardson
+Copyright 2018 Isaac Muse
 
 Library: pexpect
 Version: 4.8.0
@@ -9,25 +16,13 @@ License: ISC
 Copyright 2012 Noah Spurrier <noah@noah.org>
 Copyright 2013-2014 Pexpect development team
 
-Library: beautifulsoup4
-Version: 4.9.1
-License: MIT
-Copyright 2004-2019 Leonard Richardson
-Copyright 2018 Isaac Muse
-Copyright 2004-2017 Leonard Richardson
-
-Library: pudb
-Version: 2019.2
-License: MIT
-Copyright 2009 Andreas Kloeckner and contributors
-
-Library: requests
-Version: 2.25.0
-License: Apache 2.0
-Kenneth Reitz
-
 Library: ptyprocess
 Version: 0.7.0
 License: ISC
 Copyright 2012 Noah Spurrier <noah@noah.org>
 Copyright 2013-2014 Pexpect development team
+
+Library: requests
+Version: 2.25.0
+License: Apache 2.0
+Kenneth Reitz
