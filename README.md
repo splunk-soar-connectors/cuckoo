@@ -1,17 +1,17 @@
 [comment]: # "Auto-generated SOAR connector documentation"
 # Cuckoo
 
-Publisher: Splunk  
-Connector Version: 2\.1\.1  
+Publisher: Splunk Community  
+Connector Version: 2\.2\.1  
 Product Vendor: Cuckoo  
 Product Name: Cuckoo  
 Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 4\.9\.39220  
+Minimum Product Version: 5\.0\.0  
 
 This app supports executing various investigative and generic actions on the Cuckoo sandbox
 
 [comment]: # " File: readme.md"
-[comment]: # "  Copyright (c) 2014-2021 Splunk Inc."
+[comment]: # "  Copyright (c) 2014-2022 Splunk Inc."
 [comment]: # ""
 [comment]: # "  Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)"
 [comment]: # ""
