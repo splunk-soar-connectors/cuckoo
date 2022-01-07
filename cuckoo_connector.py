@@ -1,6 +1,6 @@
 # File: cuckoo_connector.py
 #
-# Copyright (c) 2014-2021 Splunk Inc.
+# Copyright (c) 2014-2022 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,17 +15,18 @@
 #
 #
 # Phantom App imports
-import phantom.app as phantom
-from phantom.base_connector import BaseConnector
-from phantom.action_result import ActionResult
-import phantom.rules as Rules
-
-from cuckoo_consts import *
+import json
 import math
 import time
-import json
+
+import phantom.app as phantom
+import phantom.rules as Rules
 import requests
 from bs4 import BeautifulSoup
+from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+
+from cuckoo_consts import *
 
 
 class RetVal(tuple):
@@ -139,7 +140,8 @@ class CuckooConnector(BaseConnector):
         if response.status_code == 200:
             return RetVal(phantom.APP_SUCCESS, {})
 
-        return RetVal(action_result.set_status(phantom.APP_ERROR, "Status code: {0}. Empty response and no information in the header".format(response.status_code)), None)
+        return RetVal(action_result.set_status(phantom.APP_ERROR,
+                    "Status code: {0}. Empty response and no information in the header".format(response.status_code)), None)
 
     def _process_html_response(self, response, action_result):
 
@@ -501,9 +503,10 @@ class CuckooConnector(BaseConnector):
 
 if __name__ == '__main__':
 
-    import pudb
-    import sys
     import argparse
+    import sys
+
+    import pudb
 
     pudb.set_trace()
 
@@ -512,12 +515,14 @@ if __name__ == '__main__':
     argparser.add_argument('input_test_json', help='Input Test JSON file')
     argparser.add_argument('-u', '--username', help='username', required=False)
     argparser.add_argument('-p', '--password', help='password', required=False)
+    argparser.add_argument('-v', '--verify', action='store_true', help='verify', required=False, default=False)
 
     args = argparser.parse_args()
     session_id = None
 
     username = args.username
     password = args.password
+    verify = args.verify
 
     if username is not None and password is None:
 
@@ -529,7 +534,7 @@ if __name__ == '__main__':
         try:
             login_url = BaseConnector._get_phantom_base_url() + "/login"
             print("Accessing the Login page")
-            r = requests.get(login_url, verify=False)
+            r = requests.get(login_url, verify=verify)   # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
             csrftoken = r.cookies['csrftoken']
 
             data = dict()
@@ -542,15 +547,16 @@ if __name__ == '__main__':
             headers['Referer'] = login_url
 
             print("Logging into Platform to get the session id")
-            r2 = requests.post(login_url, verify=False, data=data, headers=headers)
+            r2 = requests.post(login_url,    # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
+                                verify=verify, data=data, headers=headers)
             session_id = r2.cookies['sessionid']
         except Exception as e:
             print("Unable to get session id from the platfrom. Error: " + str(e))
-            exit(1)
+            sys.exit(1)
 
     if len(sys.argv) < 2:
         print("No test json specified as input")
-        exit(0)
+        sys.exit(0)
 
     with open(sys.argv[1]) as f:
         in_json = f.read()
@@ -566,4 +572,4 @@ if __name__ == '__main__':
         ret_val = connector._handle_action(json.dumps(in_json), None)
         print(json.dumps(json.loads(ret_val), indent=4))
 
-    exit(0)
+    sys.exit(0)

@@ -1,5 +1,5 @@
 [comment]: # " File: readme.md"
-[comment]: # "  Copyright (c) 2014-2021 Splunk Inc."
+[comment]: # "  Copyright (c) 2014-2022 Splunk Inc."
 [comment]: # ""
 [comment]: # "  Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)"
 [comment]: # ""
@@ -36,3 +36,11 @@ to the action result which will point to analysis summary for each action.
 -   New action 'submit strings' has been added. Hence, it is requested to the end-user to please
     update their existing playbooks by inserting the corresponding action blocks for this action on
     the earlier versions of the app.
+## Port Information
+
+The app uses HTTP/ HTTPS protocol for communicating with the Cuckoo server. Below are the default ports used by Splunk SOAR.
+
+SERVICE NAME | TRANSPORT PROTOCOL | PORT
+------------ | ------------------ | ----
+**http** | tcp | 80
+**https** | tcp | 443
