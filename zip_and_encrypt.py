@@ -1,6 +1,6 @@
 # File: zip_and_encrypt.py
 #
-# Copyright (c) 2014-2022 Splunk Inc.
+# Copyright (c) 2014-2025 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import uuid
 
 import pexpect
 from bs4 import UnicodeDammit
+
 
 zipexec = "/usr/bin/zip"
 
@@ -77,7 +78,7 @@ class zip_and_encrypt:
         command_output, exitstatus = pexpect.run(command, withexitstatus=True, events={"(?i)password: ": f"{self._password}\n"})
 
         if exitstatus != 0:
-            raise Exception("Unable to perform zip and encryption on file. {}".format(UnicodeDammit(command_output).unicode_markup))
+            raise Exception(f"Unable to perform zip and encryption on file. {UnicodeDammit(command_output).unicode_markup}")
 
         return True
 
@@ -92,7 +93,6 @@ class zip_and_encrypt:
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) < 2:
         print(f"usage: {os.path.basename(sys.argv[0])} <filename>")
         sys.exit(0)
