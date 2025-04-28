@@ -1,7 +1,7 @@
 # Cuckoo
 
 Publisher: Splunk Community \
-Connector Version: 2.2.1 \
+Connector Version: 2.2.2 \
 Product Vendor: Cuckoo \
 Product Name: Cuckoo \
 Minimum Product Version: 5.0.0
