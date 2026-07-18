@@ -440,7 +440,10 @@ class CuckooConnector(BaseConnector):
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
-        task_id = param["id"]
+        ret_val, task_id = self._validate_integer(action_result, param["id"], "Task ID")
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
+
         return self._poll_for_task(action_result, task_id)
 
     def handle_action(self, param):
