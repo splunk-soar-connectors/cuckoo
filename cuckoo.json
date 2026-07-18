@@ -33,6 +33,7 @@
         "use_https": {
             "description": "Connect with HTTPS",
             "data_type": "boolean",
+            "default": true,
             "order": 2
         },
         "verify_server_cert": {

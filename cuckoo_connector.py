@@ -54,7 +54,7 @@ class CuckooConnector(BaseConnector):
 
         self._host = config.get("server")
         self._port = config.get("port")
-        self._use_https = config.get("use_https", False)
+        self._use_https = config.get("use_https", True)
         self._append_uri = config.get("append_uri", "")
         self._web_ui_base_url = config.get("web_ui_base_url")
         self._verify_server_cert = config.get("verify_server_cert", False)
