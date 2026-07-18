@@ -1,9 +1,9 @@
 # Cuckoo
 
-Publisher: Splunk Community \
-Connector Version: 2.2.2 \
-Product Vendor: Cuckoo \
-Product Name: Cuckoo \
+Publisher: Splunk Community <br>
+Connector Version: 2.2.2 <br>
+Product Vendor: Cuckoo <br>
+Product Name: Cuckoo <br>
 Minimum Product Version: 5.0.0
 
 This app supports executing various investigative and generic actions on the Cuckoo sandbox
@@ -68,17 +68,17 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
-[detonate file](#action-detonate-file) - Run the file in the sandbox and retrieve the analysis results \
-[get report](#action-get-report) - Query for results of an already completed detonation \
-[detonate url](#action-detonate-url) - Load a URL in the Cuckoo sandbox and retrieve the analysis results \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
+[detonate file](#action-detonate-file) - Run the file in the sandbox and retrieve the analysis results <br>
+[get report](#action-get-report) - Query for results of an already completed detonation <br>
+[detonate url](#action-detonate-url) - Load a URL in the Cuckoo sandbox and retrieve the analysis results <br>
 [submit strings](#action-submit-strings) - Add VirusTotal compatible URL/Domain to the list of pending tasks
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -93,7 +93,7 @@ No Output
 
 Run the file in the sandbox and retrieve the analysis results
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -521,7 +521,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Query for results of an already completed detonation
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -946,7 +946,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Load a URL in the Cuckoo sandbox and retrieve the analysis results
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -1301,7 +1301,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Add VirusTotal compatible URL/Domain to the list of pending tasks
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -1359,7 +1359,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

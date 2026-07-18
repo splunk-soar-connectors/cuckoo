@@ -1,6 +1,6 @@
 # File: cuckoo_connector.py
 #
-# Copyright (c) 2014-2025 Splunk Inc.
+# Copyright (c) 2014-2026 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -280,7 +280,7 @@ class CuckooConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR, "Unable to retrieve 'task id'"), None
 
     def _poll_for_task(self, action_result, task_id, key=""):
-        max_count = int(math.ceil(self._cuckoo_timeout / POLL_SLEEP_SECS))
+        max_count = math.ceil(self._cuckoo_timeout / POLL_SLEEP_SECS)
 
         result_data = {}
 
