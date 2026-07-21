@@ -1,6 +1,6 @@
 # File: cuckoo_connector.py
 #
-# Copyright (c) 2014-2025 Splunk Inc.
+# Copyright (c) 2014-2026 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,10 +54,10 @@ class CuckooConnector(BaseConnector):
 
         self._host = config.get("server")
         self._port = config.get("port")
-        self._use_https = config.get("use_https", False)
+        self._use_https = config.get("use_https", True)
         self._append_uri = config.get("append_uri", "")
         self._web_ui_base_url = config.get("web_ui_base_url")
-        self._verify_server_cert = config.get("verify_server_cert", False)
+        self._verify_server_cert = config.get("verify_server_cert", True)
         self._base_url = "{scheme}://{host}:{port}{append_uri}".format(
             scheme="https" if self._use_https else "http", host=self._host, port=self._port, append_uri=self._append_uri
         )
@@ -280,7 +280,7 @@ class CuckooConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR, "Unable to retrieve 'task id'"), None
 
     def _poll_for_task(self, action_result, task_id, key=""):
-        max_count = int(math.ceil(self._cuckoo_timeout / POLL_SLEEP_SECS))
+        max_count = math.ceil(self._cuckoo_timeout / POLL_SLEEP_SECS)
 
         result_data = {}
 
@@ -440,7 +440,10 @@ class CuckooConnector(BaseConnector):
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
-        task_id = param["id"]
+        ret_val, task_id = self._validate_integer(action_result, param["id"], "Task ID")
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
+
         return self._poll_for_task(action_result, task_id)
 
     def handle_action(self, param):
