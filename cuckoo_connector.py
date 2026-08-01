@@ -54,7 +54,9 @@ class CuckooConnector(BaseConnector):
 
         self._host = config.get("server")
         self._port = config.get("port")
-        self._use_https = config.get("use_https", True)
+        requested_https = config.get("use_https")
+        allow_insecure_http = config.get("allow_insecure_http", False) is True
+        self._use_https = requested_https is not False or not allow_insecure_http
         self._append_uri = config.get("append_uri", "")
         self._web_ui_base_url = config.get("web_ui_base_url")
         self._verify_server_cert = config.get("verify_server_cert", True)
@@ -73,6 +75,8 @@ class CuckooConnector(BaseConnector):
         self.username = config.get("username")
         self.password = config.get("password")
         self._auth = None
+        if not self._use_https and (self.username or self.password):
+            return self.set_status(phantom.APP_ERROR, "HTTP Basic authentication requires HTTPS")
         if self.username and self.password:
             self._auth = (self.username, self.password)
         self._version = None

@@ -31,42 +31,48 @@
             "order": 1
         },
         "use_https": {
-            "description": "Connect with HTTPS",
+            "description": "Connect with HTTPS. Existing HTTP assets are migrated to HTTPS unless insecure HTTP is explicitly allowed.",
             "data_type": "boolean",
             "default": true,
             "order": 2
+        },
+        "allow_insecure_http": {
+            "description": "Explicitly allow unencrypted HTTP when Connect with HTTPS is disabled. HTTP Basic authentication is never allowed over HTTP.",
+            "data_type": "boolean",
+            "default": false,
+            "order": 3
         },
         "verify_server_cert": {
             "description": "Verify server certificate",
             "data_type": "boolean",
             "default": true,
-            "order": 3
+            "order": 4
         },
         "timeout": {
             "description": "Timeout (seconds)",
             "data_type": "numeric",
             "required": true,
-            "order": 4
+            "order": 5
         },
         "username": {
             "description": "HTTP Basic Auth Username",
             "data_type": "string",
-            "order": 5
+            "order": 6
         },
         "password": {
             "description": "HTTP Basic Auth Password",
             "data_type": "password",
-            "order": 6
+            "order": 7
         },
         "append_uri": {
             "description": "Additional URI Path to Add to the Server",
             "data_type": "string",
-            "order": 7
+            "order": 8
         },
         "web_ui_base_url": {
             "description": "Base URL to the Web Interface (e.g. https://10.16.6.42:8000/)",
             "data_type": "string",
-            "order": 8
+            "order": 9
         }
     },
     "actions": [

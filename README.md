@@ -58,7 +58,8 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
 **server** | required | string | Server IP/Hostname |
 **port** | required | string | REST API Port |
-**use_https** | optional | boolean | Connect with HTTPS |
+**use_https** | optional | boolean | Connect with HTTPS. Existing HTTP assets are migrated to HTTPS unless insecure HTTP is explicitly allowed. |
+**allow_insecure_http** | optional | boolean | Explicitly allow unencrypted HTTP when Connect with HTTPS is disabled. HTTP Basic authentication is never allowed over HTTP. |
 **verify_server_cert** | optional | boolean | Verify server certificate |
 **timeout** | required | numeric | Timeout (seconds) |
 **username** | optional | string | HTTP Basic Auth Username |
